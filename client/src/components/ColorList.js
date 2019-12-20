@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 
 import axiosWithAuth from "../helpers/axios";
+import { CompactPicker } from "react-color";
 
 const initialColor = {
 	color: "",
@@ -156,6 +157,17 @@ const ColorList = ({ colors, updateColors }) => {
 							value={colorToEdit.code.hex}
 						/>
 					</label>
+					<label>
+						<CompactPicker
+							color={colorToEdit.code.hex}
+							onChangeComplete={e =>
+								setColorToEdit({
+									...colorToEdit,
+									code: { hex: e.hex }
+								})
+							}
+						/>
+					</label>
 					<div className="button-row">
 						<button type="submit">save</button>
 						<button onClick={() => setEditing(false)}>
@@ -191,6 +203,17 @@ const ColorList = ({ colors, updateColors }) => {
 								})
 							}
 							value={colorToAdd.code.hex}
+						/>
+					</label>
+					<label>
+						<CompactPicker
+							color={colorToAdd.code.hex}
+							onChangeComplete={e =>
+								setColorToAdd({
+									...colorToAdd,
+									code: { hex: e.hex }
+								})
+							}
 						/>
 					</label>
 					<div className="button-row">
