@@ -41,9 +41,9 @@ const Bubbles = ({ colors }) => {
 											/>
 											<Rect
 												x={20 * i}
-												y={400}
+												y={420}
 												width={20}
-												height={100}
+												height={2 * r}
 												fill={colors[i].code.hex}
 											/>
 										</>
