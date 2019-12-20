@@ -25,6 +25,10 @@ const ColorList = ({ colors, updateColors }) => {
 		// think about where will you get the id from...
 		// where is is saved right now?
 
+		if (colorToEdit.color === "" || colorToEdit.code.hex === "") {
+			alert("FILL THE VALUES!");
+			return false;
+		}
 		console.log(colorToEdit);
 		axiosWithAuth()
 			.put(`/api/colors/${colorToEdit.id}`, colorToEdit)
@@ -53,6 +57,10 @@ const ColorList = ({ colors, updateColors }) => {
 		// think about where will you get the id from...
 		// where is is saved right now?
 
+		if (colorToAdd.color === "" || colorToAdd.code.hex === "") {
+			alert("FILL THE VALUES!");
+			return false;
+		}
 		console.log(colorToAdd);
 		axiosWithAuth()
 			.post(`/api/colors`, colorToAdd)
@@ -93,11 +101,8 @@ const ColorList = ({ colors, updateColors }) => {
 			<p>
 				colors{" "}
 				<div
-					onClick={e => {
-						console.log("click");
-
-						setAdding(true);
-					}}
+					onClick={e => setAdding(true)}
+					style={{ cursor: "pointer" }}
 				>
 					➕
 				</div>
